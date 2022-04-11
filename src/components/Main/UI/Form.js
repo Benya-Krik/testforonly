@@ -6,6 +6,9 @@ import Button from './Button';
 import Checkbox from './Checkbox';
 import Error from './Error';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -17,12 +20,14 @@ align-items: center;
 
 
 
-export const Form = () => {
+export const Form = (props) => {
 
+    const navigate = useNavigate();
     const { register,formState:{ errors }, handleSubmit, reset} = useForm();
     const onSubmit = (data) => {
-        alert(JSON.stringify(data));
-        reset();
+        if (data.firstName === 'user' && data.secondName === 'pass') {
+           navigate('/profile')
+        }
     }
 
     return (
@@ -36,7 +41,7 @@ export const Form = () => {
                 
                 <Checkbox></Checkbox>
 
-                <Button width='640px' kuda='/profile'>Войти</Button>
+                <Button width='640px' link='/profile'>Войти</Button>
             </Flex>
         </StyledForm>
     )

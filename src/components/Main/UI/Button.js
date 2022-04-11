@@ -33,7 +33,8 @@ width: ${props => props.width || '320px'};
 
 export const Button = (props) => {
   return (
-    <StyledButton {...props}><Link to={props.kuda}>{props.children}</Link></StyledButton>
+    // <StyledButton {...props}>{props.children}</StyledButton>
+    <StyledButton {...props}><Link to={props.link}>{props.children}</Link></StyledButton>
   )
 };
 

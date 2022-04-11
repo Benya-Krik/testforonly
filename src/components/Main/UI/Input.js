@@ -52,13 +52,14 @@ const StyledInput = styled.div`
 `
 
 export const Input = ({register, label, required, children, display, width, errors, maxLength, color, outline, reset}) => {
-    console.log(errors);
+    // console.log(errors);
+    const Hello = () => color = 'red'
   return (
-    <StyledInput display={display} width={width} color={color}>
+    <StyledInput display={display} width={width} color={color} outline={outline}>
         
         {/* {errors?.firstName && <Error width='640px'>regreg</Error>} */}
         <label>{children}</label>
-        <input {...register(label, {required, maxLength, reset})}
+        <input {...register(label, {required, maxLength, reset}, errors?.type === 'required' && color)}
         ></input>
         {errors?.type === 'required' && <span>Обязательное поле</span>}
         {/* {errors? && console.log('hello') }  */}

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Flex from '../UI/Flex';
 import Button from '../UI/Button';
+import { useHistory } from "react-router-dom";
 
 const StyledProfile = styled.section`
 width: 100%;
@@ -19,7 +20,7 @@ export const Profile = () => {
     <StyledProfile>
         <Flex gap='50px' direction='column' justify='center' align='center'>
             <h2>Здравствуйте, steve.jobs@example.com</h2>
-            <Button width='200px' color='#000000' background='#F5F5F5' kuda='/'>Выйти</Button>
+            <Button width='200px' color='#000000' background='#F5F5F5' link='/'>Выйти</Button>
         </Flex>
     </StyledProfile>
   )

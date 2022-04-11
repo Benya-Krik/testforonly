@@ -43,7 +43,7 @@ export const Checkbox = () => {
   return (
     <StyledCheckbox>
       <input id="remember" type="checkbox"></input>
-      <label for='remember'>Запомнить пароль</label>
+      <label for="remember">Запомнить пароль</label>
     </StyledCheckbox>
   )
 };
