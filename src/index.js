@@ -4,7 +4,11 @@ import App from './App';
 import { createGlobalStyle } from 'styled-components';
 import { BrowserRouter } from 'react-router-dom';
 
-
+const user = {
+  name: "steve.jobs@example.com",
+  password: "password"
+};
+export default user;
 
 const Global = createGlobalStyle`
 * {

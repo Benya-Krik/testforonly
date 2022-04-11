@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledError = styled.div`
-/* display:none; */
+display: ${props => props.display || 'none'};
 padding: 20px 20px 20px 54px;
 background-color: #F5E9E9;
 outline: 1px solid #E26F6F;
@@ -34,8 +34,9 @@ margin-bottom:20px;
 `
 
 export const Error = (props) => {
+
   return (
-    <StyledError width={props.width}><div><span>!</span></div>{props.children}</StyledError>
+    <StyledError display={props.display} width={props.width}><div><span>!</span></div>{props.children}</StyledError>
   )
 };
 

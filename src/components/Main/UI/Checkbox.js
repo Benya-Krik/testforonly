@@ -9,6 +9,10 @@ const StyledCheckbox = styled.div`
   box-sizing: border-box;
   color: #1F1F1F;
 
+  &:hover {
+    opacity: 0.9
+  }
+
   &::before {
     content: '';
     box-sizing: border-box;

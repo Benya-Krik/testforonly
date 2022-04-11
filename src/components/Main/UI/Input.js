@@ -1,8 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useForm } from 'react-hook-form';
-import Error from './Error';
-
 
 const StyledInput = styled.div`
 & input{
@@ -19,21 +16,16 @@ const StyledInput = styled.div`
     background-color: #F5F5F5;
     border-radius: 8px;
     transition: all 0.3s;
-    color: ${props => props.color || '#232323'};
-    outline: ${props => props.outline || 'none'};
-
+    outline: ${(props) => (props.outline === 'error' ? '1px solid #E26F6F' : 'none')};
+    color: ${(props) => (props.color === 'error' ? '#E26F6F' : '#232323')};
 
     &:focus, :active, :hover {
         outline: 0;
         outline-offset: 0;
     }
 
-    &:hover {
-        box-shadow: 0px 0px 4px 0px rgba(34, 60, 80, 0.2);
-    }
-
     &:focus {
-        outline: 1px solid #4A67FF;
+        outline: ${(props) => (props.outline === 'error' ? '1px solid #E26F6F' : '1px solid #4A67FF;')};
     }
 }
 
@@ -50,23 +42,24 @@ const StyledInput = styled.div`
     line-height: 17px;
 }
 `
+const InputStyle = {
+    theme: ''
+}
 
-export const Input = ({register, label, required, children, display, width, errors, maxLength, color, outline, reset}) => {
-    // console.log(errors);
-    const Hello = () => color = 'red'
-  return (
-    <StyledInput display={display} width={width} color={color} outline={outline}>
-        
-        {/* {errors?.firstName && <Error width='640px'>regreg</Error>} */}
-        <label>{children}</label>
-        <input {...register(label, {required, maxLength, reset}, errors?.type === 'required' && color)}
-        ></input>
-        {errors?.type === 'required' && <span>Обязательное поле</span>}
-        {/* {errors? && console.log('hello') }  */}
+export const Input = ({register, label, required, children, display, width, errors, reset, type}) => {
 
-        
-    </StyledInput> 
-  )
+    const ErrorTheme = () => InputStyle.theme = 'error';
+    const NormalTheme = () => InputStyle.theme = '';
+
+    return (
+        <StyledInput display={display} width={width} color={InputStyle.theme} outline={InputStyle.theme}>
+            
+            <label>{children}</label>
+            <input type={type} {...register(label, {required, reset}, errors?.type === 'required' && ErrorTheme(), errors?.type !== 'required' && NormalTheme())}/>
+            {errors?.type === 'required' && <span>Обязательное поле</span>}
+            
+        </StyledInput> 
+    )
 };
 
 export default Input;

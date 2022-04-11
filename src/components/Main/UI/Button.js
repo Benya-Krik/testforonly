@@ -1,6 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 import styled from 'styled-components'
+import { useForm } from 'react-hook-form';
+import { useNavigate } from "react-router-dom";
+
 
 
 const StyledButton = styled.button`
@@ -14,6 +16,7 @@ font-weight: 700;
 box-sizing: border-box;
 font-style: inherit;
 border: none;
+transition: all .3s;
 background-color: ${props => props.background || '#4A67FF'};
 color: ${props => props.color || '#FFFFFF'};
 
@@ -27,14 +30,15 @@ width: ${props => props.width || '320px'};
 }
 &:hover {
     cursor:pointer;
-    opacity: 0.9;
+    transform: scale(1.01)
 }
 `
 
 export const Button = (props) => {
+
+  
   return (
-    // <StyledButton {...props}>{props.children}</StyledButton>
-    <StyledButton {...props}><Link to={props.link}>{props.children}</Link></StyledButton>
+    <StyledButton {...props}>{props.children}</StyledButton>
   )
 };
 
